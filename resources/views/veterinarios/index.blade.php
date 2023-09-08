@@ -1,5 +1,5 @@
 <!-- Herda o layout padrão definido no template "main" -->
-@extends('templates.main', ['titulo' => "Veterinarios", 'rota' => "veterinarios.create"])
+@extends('templates.main', ['titulo' => "Veterinários", 'rota' => "veterinarios.create"])
 <!-- Preenche o conteúdo da seção "titulo" -->
 @section('titulo') Veterinarios @endsection
 <!-- Preenche o conteúdo da seção "conteudo" -->
@@ -7,12 +7,12 @@
 
     <div class="row">
         <div class="col">
-            <x-datalist 
-                title="Veterinarios" 
+            <x-datatable 
+                title="Veterinários" 
                 crud="veterinarios" 
-                :header="['id', 'CRMV', 'nome', 'especialidade', 'ações']" 
-                :data="$data"
-                :hide="[true, true, false, true, false]" 
+                :header="['crmv', 'nome', 'especialidade', 'ações']" 
+                :data="$dados"
+                :hide="[true, false, true, false]" 
             /> 
         </div>
     </div>

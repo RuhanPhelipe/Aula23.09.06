@@ -1,7 +1,7 @@
 <!-- Herda o layout padrão definido no template "main" -->
 @extends('templates.main', ['titulo' => "Especialidades", 'rota' => "especialidades.create"])
 <!-- Preenche o conteúdo da seção "titulo" -->
-@section('titulo') Clientes @endsection
+@section('titulo') Especialidades @endsection
 <!-- Preenche o conteúdo da seção "conteudo" -->
 @section('conteudo')
 
@@ -11,7 +11,7 @@
                 title="Especialidades" 
                 crud="especialidades" 
                 :header="['id', 'nome', 'descricao', 'ações']" 
-                :data="$data"
+                :data="$dados"
                 :hide="[true, false, true, false]" 
             /> 
         </div>

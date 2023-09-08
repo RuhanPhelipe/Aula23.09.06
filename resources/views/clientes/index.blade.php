@@ -11,7 +11,7 @@
                 title="Clientes" 
                 crud="clientes" 
                 :header="['id', 'nome', 'email', 'ações']" 
-                :data="$data"
+                :data="$dados"
                 :hide="[true, false, true, false]" 
             /> 
         </div>

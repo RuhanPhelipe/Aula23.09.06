@@ -1,7 +1,7 @@
 <!-- Herda o layout padrão definido no template "main" -->
-@extends('templates.main', ['titulo' => "Novo Veterinario"])
+@extends('templates.main', ['titulo' => "Novo Veterinário"])
 <!-- Preenche o conteúdo da seção "titulo" -->
-@section('titulo') Veterinarios @endsection
+@section('titulo') Veterinários @endsection
 <!-- Preenche o conteúdo da seção "conteudo" -->
 @section('conteudo')
 
@@ -13,11 +13,25 @@
                     <input 
                         type="text" 
                         class="form-control" 
+                        name="crmv" 
+                        placeholder="CRMV"
+                        value="{{old('crmv')}}"
+                    />
+                    <label for="crmv">CRMV</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" >
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control" 
                         name="nome" 
                         placeholder="Nome"
                         value="{{old('nome')}}"
                     />
-                    <label for="nome">Nome do Veterinario</label>
+                    <label for="nome">Nome do Veterinário</label>
                 </div>
             </div>
         </div>
@@ -28,10 +42,10 @@
                         type="especialidade" 
                         class="form-control" 
                         name="especialidade" 
-                        placeholder="E-mail"
+                        placeholder="Especialidade"
                         value="{{old('especialidade')}}"
                     />
-                    <label for="especialidade">Especialidade do Veterinario</label>
+                    <label for="especialidade">Especialidade do Veterinário</label>
                 </div>
             </div>
         </div>

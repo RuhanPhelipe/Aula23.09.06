@@ -7,12 +7,12 @@
     <title>Cadastrar de Clientes</title>
 </head>
 <body>
-    <a href="{{route('clientes.index')}}">Voltar</a>
+    <a href="{{route('especialidades.index')}}">Voltar</a>
     <br>
     <label>ID: </label>{{$dados['id']}}
     <br>
     <label>Nome: </label>{{$dados['nome']}}
     <br>
-    <label>E-mail: </label>{{$dados['email']}}
+    <label>Descrição: </label>{{$dados['descricao']}}
 </body>
 </html>

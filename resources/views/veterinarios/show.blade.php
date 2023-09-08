@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar de Clientes</title>
+    <title>Cadastrar de Veterinários</title>
 </head>
 <body>
     <a href="{{route('veterinarios.index')}}">Voltar</a>
     <br>
-    <label>CRMV: </label>{{$data['CRMV']}}
+    <label>CRMV: </label>{{$dados['crmv']}}
     <br>
-    <label>Nome: </label>{{$data['nome']}}
+    <label>Nome: </label>{{$dados['nome']}}
     <br>
-    <label>Especialidade: </label>{{$data['especialidade']}}
+    <label>Especialiadade: </label>{{$dados['especialidade']}}
 </body>
 </html>

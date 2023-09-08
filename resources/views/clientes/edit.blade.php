@@ -5,7 +5,7 @@
 <!-- Preenche o conteúdo da seção "conteudo" -->
 @section('conteudo')
 
-<form action="{{ route('clientes.update', $data['id']) }}" method="POST">
+<form action="{{ route('clientes.update', $dados['id']) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="row">
@@ -16,7 +16,7 @@
                     class="form-control" 
                     name="nome" 
                     placeholder="Nome"
-                    value="{{$data['nome']}}"
+                    value="{{$dados['nome']}}"
                 />
                 <label for="nome">Nome do Cliente</label>
             </div>
@@ -30,7 +30,7 @@
                     class="form-control" 
                     name="email" 
                     placeholder="E-mail"
-                    value="{{$data['email']}}"
+                    value="{{$dados['email']}}"
                 />
                 <label for="email">E-mail do Cliente</label>
             </div>

@@ -4,19 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class VeterinarioController extends Controller {
+class VeterinarioController extends Controller{
+
     public $veterinarios = [[
-        'id' => 1,
-        'CRMV' => 0000,
-        'nome' => 'TesteN',
-        'especialidade' => 'TesteE',
+        "crmv" => 1111,
+        "nome" => "Gil Eduardo",
+        "especialidade" => "Cardiologista"
     ]];
 
-    public function __construct()  {
+    public function __construct() {
         
         $aux = session('veterinarios');
 
-        if (!isset($aux)) {
+        if(!isset($aux)) {
             session(['veterinarios' => $this->veterinarios]);
         }
     }
@@ -26,12 +26,9 @@ class VeterinarioController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-
-        $data = session('veterinarios');
-        $clinica = "VetClin DWII";
-
-        return view('veterinarios.index', compact('data', 'clinica'));
+    public function index(){
+        $dados = session('veterinarios');
+        return view('veterinarios.index', compact(['dados']));
     }
 
     /**
@@ -39,7 +36,8 @@ class VeterinarioController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         return view('veterinarios.create');
     }
 
@@ -49,25 +47,16 @@ class VeterinarioController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        
+    public function store(Request $request)
+    {
         $aux = session('veterinarios');
-        $crmvs = array_column($aux, 'CRMV');
-
-        if(count($crmvs) > 0) {
-            $new_crmv = max($crmvs) +1;
-        }else {
-            $new_crmv = 1;
-        }
-
-        $new = [
-            'CRMV' => $new_crmv,
-            'nome' => $request->nome,
-            'especialidade' =>  $request->especialidade
+        $novo = [
+            "crmv" => $request->crmv,
+            "nome" => $request->nome,
+            "especialidade" => $request->especialidade
         ];
 
-        array_push($aux, $new);
-
+        array_push($aux, $novo);
         session(['veterinarios' => $aux]);
 
         return redirect()->route('veterinarios.index');
@@ -76,69 +65,73 @@ class VeterinarioController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  int  $crmv
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($crmv) {
+    public function show($id)
+    {
         $aux = session('veterinarios');
         
-        $index = array_search($crmv, array_column($aux, 'CRMV'));
+        $index = array_search($id, array_column($aux, 'crmv'));
 
-        $data = $aux[$index];
+        $dados = $aux[$index];
 
-        return view('veterinarios.show', compact('data'));
+        return view('veterinarios.show', compact('dados'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $crmv
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($crmv) {
+    public function edit($id)
+    {
         $aux = session('veterinarios');
-        
-        $index = array_search($crmv, array_column($aux, 'CRMV'));
+            
+        $index = array_search($id, array_column($aux, 'crmv'));
 
-        $data = $aux[$index];
+        $dados = $aux[$index];    
 
-        return view('veterinarios.edit', compact('data'));
+        return view('veterinarios.edit', compact('dados'));    
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $crmv
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $crmv) {
+    public function update(Request $request, $id)
+    {
         $aux = session('veterinarios');
+        
+        $index = array_search($id, array_column($aux, 'crmv'));
 
-        $index = array_search($crmv, array_column($aux, 'CRMV'));
-
-        $new = [
-            'CRMV' => $crmv,
-            'nome' => $request->nome,
-            'especialidade' => $request->especialidade
+        $novo = [
+            "crmv" => $request->crmv,
+            "nome" => $request->nome,
+            "especialidade" => $request->especialidade,
         ];
 
-        $aux[$index] = $new;
+        $aux[$index] = $novo;
         session(['veterinarios' => $aux]);
 
-        return redirect()->route('veterinario.index');
+        return redirect()->route('veterinarios.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $crmv
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($crmv) {
+    public function destroy($id)
+    {
         $aux = session('veterinarios');
         
-        $index = array_search($crmv, array_column($aux, 'CRMV')); 
+        $index = array_search($id, array_column($aux, 'crmv'));
 
         unset($aux[$index]);
 

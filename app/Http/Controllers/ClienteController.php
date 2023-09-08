@@ -24,12 +24,12 @@ class ClienteController extends Controller {
     
     public function index() {
         
-        $data = session('clientes');
+        $dados = session('clientes');
         $clinica = "VetClin DWII";
 
-        // Passa um array "data" com os "clientes" e a string "clínicas"
-        return view('clientes.index', compact(['data', 'clinica']));
-        // return view('cliente.index')->with('data', $data)->with('clinica', $clinica);
+        // Passa um array "dados" com os "clientes" e a string "clínicas"
+        return view('clientes.index', compact(['dados', 'clinica']));
+        // return view('cliente.index')->with('dados', $dados)->with('clinica', $clinica);
     }
 
     public function create() {
@@ -67,9 +67,9 @@ class ClienteController extends Controller {
         
         $index = array_search($id, array_column($aux, 'id'));
 
-        $data = $aux[$index];
+        $dados = $aux[$index];
 
-        return view('clientes.show', compact('data'));
+        return view('clientes.show', compact('dados'));
     }
 
     public function edit($id) {
@@ -78,9 +78,9 @@ class ClienteController extends Controller {
             
         $index = array_search($id, array_column($aux, 'id'));
 
-        $data = $aux[$index];    
+        $dados = $aux[$index];    
 
-        return view('clientes.edit', compact('data'));        
+        return view('clientes.edit', compact('dados'));        
     }
 
     public function update(Request $request, $id) {
